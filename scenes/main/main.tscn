@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bcpi8d04sry7g"]
+
+[ext_resource type="Script" uid="uid://tcef4yh42uaq" path="res://scripts/main/node_2d.gd" id="1_k2fmo"]
+[ext_resource type="PackedScene" uid="uid://cgordo86oteo3" path="res://scenes/towers/Tower.tscn" id="2_l3cfh"]
+[ext_resource type="PackedScene" uid="uid://bl0hubcdt21lh" path="res://scenes/enemies/enemy.tscn" id="3_6q06x"]
+
+[sub_resource type="Curve2D" id="Curve2D_0e48y"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 117, 15, 0, 0, 0, 0, 161, 16, 0, 0, 0, 0, 151, 62, 0, 0, 0, 0, 38, 103, 0, 0, 0, 0, 269, 178, 0, 0, 0, 0, 489, 59, 0, 0, 0, 0, 729, 164, 0, 0, 0, 0, 956, 84)
+}
+point_count = 9
+
+[node name="main" type="Node2D" unique_id=1045101475 node_paths=PackedStringArray("path")]
+script = ExtResource("1_k2fmo")
+tower_scene = ExtResource("2_l3cfh")
+path = NodePath("Path2D")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1183649858]
+curve = SubResource("Curve2D_0e48y")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1130479924]
+position = Vector2(1, 0)
+rotation = 0.12859675
+loop = false
+
+[node name="Enemy" parent="Path2D/PathFollow2D" unique_id=1342345674 node_paths=PackedStringArray("path_follow") instance=ExtResource("3_6q06x")]
+position = Vector2(0.9999714, 0.007575527)
+rotation = 0.0075755985
+path_follow = NodePath("..")
