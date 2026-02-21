@@ -216,7 +216,7 @@ func _apply_relic() -> void:
 		"Steinherz: +10 Stein bei jedem Event",
 		"Kristallsplitter: +1 Kristall nach Kampf"
 	]
-	var relic := pool[randi() % pool.size()]
+	var relic: String = pool[randi() % pool.size()]
 	relics.append(relic)
 
 	if relic.begins_with("Steinherz"):
@@ -272,7 +272,7 @@ func _update_ui() -> void:
 	for i in current_options.size():
 		event_lines.append("%d) %s" % [i + 1, current_options[i]["label"]])
 
-	var state_text := ["EVENT", "BATTLE", "GAME OVER"][state]
+	var state_text: String = ["EVENT", "BATTLE", "GAME OVER"][state]
 	info_label.text = "Status: %s | Akt: %d | Pfadknoten: %d/%d\nGold %d | Holz %d | Stein %d | Kristall %d\nBurg HP: %.0f | Allies: %d | Enemies: %d\nPlatzierungen: Einheit(LK)=%d  Turm(RK)=%d\n\nEvent-Auswahl:\n%s\n\nRelikte: %s" % [
 		state_text,
 		act,

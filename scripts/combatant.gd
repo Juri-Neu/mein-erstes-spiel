@@ -20,7 +20,7 @@ var _target: Combatant
 func _ready() -> void:
 	hp = max_hp
 	add_to_group("combatants")
-	add_to_group(team == Team.ALLY ? "allies" : "enemies")
+	add_to_group("allies" if team == Team.ALLY else "enemies")
 	match role:
 		Role.CASTLE:
 			add_to_group("castle")
